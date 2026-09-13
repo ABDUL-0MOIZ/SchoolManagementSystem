@@ -8,7 +8,9 @@ import java.util.Date;
 public class AcademicYeaRequest {
     @NotBlank
     private String label;
+    @NotBlank
     private Date start_date;
+    @NotBlank
     private Date end_date;
-
-    private Boolean status;}
+    @NotBlank
+    private Boolean statu;}
