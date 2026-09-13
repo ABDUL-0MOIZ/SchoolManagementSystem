@@ -6,7 +6,6 @@ import com.example.school_management_system.service.SectionService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,6 @@ public class SectionController {
         this.sectionService = sectionService;
     }
 
-    @PreAuthorize("hasAuthority('ROLE_Teacher')")
     // Create Section
     @PostMapping("/create")
     public ResponseEntity<String> createSection(
@@ -34,7 +32,6 @@ public class SectionController {
         return ResponseEntity.ok("Section Created Successfully");
     }
 
-    @PreAuthorize("hasAuthority('ROLE_Teacher')")
     // Update Section
     @PutMapping("/update/{id}")
     public ResponseEntity<String> update(
@@ -66,8 +63,6 @@ public class SectionController {
     }
 
     // Delete Section
-
-    @PreAuthorize("hasAuthority('ROLE_Teacher')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(
             @PathVariable String id) {
