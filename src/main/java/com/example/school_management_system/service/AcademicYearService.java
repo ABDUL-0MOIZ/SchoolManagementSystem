@@ -21,7 +21,7 @@ public void createAcademicYear(AcademicYeaRequest request){
     academicYear.setLabel(request.getLabel());
     academicYear.setStart_date(request.getStart_date());
     academicYear.setEnd_date(request.getEnd_date());
-    academicYear.setStatu(request.getStatu());
+    academicYear.setStatu(request.getStatus());
     academicYearRepo.save(academicYear);
 }
 public void update(String id,AcademicYeaRequest request){
@@ -32,7 +32,7 @@ public void update(String id,AcademicYeaRequest request){
     academicYear.setLabel(request.getLabel());
     academicYear.setStart_date(request.getStart_date());
     academicYear.setEnd_date(request.getEnd_date());
-    academicYear.setStatu(request.getStatu());
+    academicYear.setStatu(request.getStatus());
     academicYearRepo.save(academicYear);
 }
 public AcademicYearResponse getByID(String id){

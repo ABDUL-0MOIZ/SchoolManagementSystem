@@ -26,7 +26,7 @@ public void createSection(SectionRequest request){
 section.setName(request.getName());
 section.setRomeNo(request.getRomeNo());
 section.setGradeId(request.getGradeId());
-sectionRepo.save(section);
+sectionRepo.insert(section);
 }
 
 public void update(String id,SectionRequest request){
@@ -40,6 +40,7 @@ public SectionResponse getByID(String id){
     Section savedSection=  sectionRepo.findById(id).orElseThrow(()->new SectionNotFoundException("Section Not Found"));
         Grade grade=gradeRepository.findById(savedSection.getGradeId()).orElseThrow(()->new GradeNotFoundException("Grade Not Found"));
     SectionResponse response=new SectionResponse();
+    response.setId(savedSection.getId());
     response.setGradeName(grade.getClassName());
     response.setSectionName(savedSection.getName());
     response.setRoomNo(savedSection.getRomeNo());
@@ -52,7 +53,7 @@ public List<SectionResponse> getAll(){
          {
              SectionResponse response=new SectionResponse();
              Grade grade=gradeRepository.findById(section.getGradeId()).orElseThrow(()->new GradeNotFoundException("Grade Not Found"));
-
+           response.setId(section.getId());
              response.setGradeName(grade.getClassName());
              response.setSectionName(section.getName());
              response.setRoomNo(section.getRomeNo());

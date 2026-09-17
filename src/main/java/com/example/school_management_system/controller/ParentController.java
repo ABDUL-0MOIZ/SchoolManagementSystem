@@ -52,7 +52,7 @@ public class ParentController {
         }
     }
     @PostMapping("/send")
-    public void sendEmail(@RequestParam String to,@RequestParam String sub,@RequestParam String text){
+    public void sendEmail(@RequestParam @Email(message = "Please provide the right email") String to,@RequestParam String sub,@RequestParam String text){
  emailService.sendMail(to,sub,text);
     }
 }
