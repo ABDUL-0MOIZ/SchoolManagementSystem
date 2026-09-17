@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 public class Section {
     @Id
-  private String id;
+    private String id;
   private String name;
   @Indexed
   private String gradeId;

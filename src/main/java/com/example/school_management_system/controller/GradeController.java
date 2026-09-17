@@ -24,7 +24,7 @@ public class GradeController {
     }
     @PreAuthorize("hasRole('ROLE_Admin')")
     @PostMapping("/create")
-    public ResponseEntity<?> create(GradeRequest request){
+    public ResponseEntity<?> create(@RequestBody @Valid GradeRequest request){
       log.info("creating grade....");
         gradeservice.createGrade(request);
     return new ResponseEntity<>("Successfully Created", HttpStatus.CREATED);
@@ -46,7 +46,7 @@ return new ResponseEntity<>(gradeResponse,HttpStatus.OK);
        return new ResponseEntity<>(gradeservice.getAll(),HttpStatus.OK);
     }
     @PreAuthorize("hasRole('ROLE_Admin')")
-    @DeleteMapping("/delete{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteGrade(@PathVariable String id){
        log.info("deleting grade..............");
         gradeservice.delete(id);

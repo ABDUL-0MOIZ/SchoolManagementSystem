@@ -43,7 +43,7 @@ return new ResponseEntity<>(studentResponse,HttpStatus.OK);
     return  new ResponseEntity<>(page,HttpStatus.OK);
     }
     @PutMapping("/students/{id}")
-    public ResponseEntity<?> UpdateStudents(@PathVariable @NotNull(message = "id is required to update Student") String id,@RequestBody CreateStudent createStudent){
+    public ResponseEntity<?> UpdateStudents(@PathVariable @NotNull(message = "id is required to update Student") String id,@RequestBody @Valid CreateStudent createStudent){
         studentService.updateStudent(id,createStudent);
     return new ResponseEntity<>("Succesasfully updated",HttpStatus.CREATED);
     }

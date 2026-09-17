@@ -8,11 +8,13 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Tag(name = "Exam",description = "All the Api of Exam ")
-@RequestMapping("api/v1/Exam")
+@RequestMapping("api/v1/exam")
+@Validated
 public class ExamController {
     private final ExamService examService;
 
@@ -30,13 +32,13 @@ public class ExamController {
         return new ResponseEntity<>("Successfully updated ", HttpStatus.OK);
 
     }
-    @GetMapping("/get{id}")
-    public ResponseEntity<?> getById(@PathVariable String id){
+    @GetMapping("/get/{id}")
+    public ResponseEntity<?> getById(@PathVariable @NotBlank String id){
         ExamResponse response=examService.getByID(id);
     return new ResponseEntity<>(response,HttpStatus.OK);
     }
-    @DeleteMapping("delete{id}")
-    public ResponseEntity<?> delete(@PathVariable String id){
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable @NotBlank  String id){
         examService.deleteExam(id);
         return new ResponseEntity<>("Successfully Deleted ", HttpStatus.OK);
 
