@@ -1,10 +1,11 @@
 HELP.md
+# Spring Boot properties
+**/src/main/resources/application.properties
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-# Spring Boot properties
-src/main/resources/application.properties
+
 ### STS ###
 .apt_generated
 .classpath
